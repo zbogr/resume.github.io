@@ -12,7 +12,6 @@
 				color: #333;
 				line-height: 1.6;
 			}
-
 			.container {
 				max-width: 900px;
 				margin: 0 auto;
@@ -21,27 +20,22 @@
 				box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
 				border-radius: 10px;
 			}
-
 			header {
 				text-align: center;
 				padding-bottom: 20px;
 				border-bottom: 2px solid #eee;
 			}
-
 			header h1 {
 				margin: 10px 0;
 				font-size: 28px;
 			}
-
 			header p {
 				margin: 5px 0;
 				color: #555;
 			}
-
 			section {
 				margin: 30px 0;
 			}
-
 			section h2 {
 				font-size: 20px;
 				margin-bottom: 10px;
@@ -49,7 +43,6 @@
 				border-left: 4px solid #ffcc00;
 				padding-left: 10px;
 			}
-
 			.skills span {
 				display: inline-block;
 				background: #ffcc00;
@@ -60,7 +53,6 @@
 				font-size: 14px;
 				font-weight: bold;
 			}
-
 			.projects a {
 				display: block;
 				text-decoration: none;
@@ -68,19 +60,63 @@
 				margin-bottom: 8px;
 				transition: 0.3s;
 			}
-
 			.projects a:hover {
 				color: #005999;
 				text-decoration: underline;
 			}
-
 			footer {
 				text-align: center;
 				margin-top: 40px;
 				font-size: 14px;
 				color: #777;
 			}
+			.cources {
+				display: flex;
+				justify-content: space-around;
+				flex-wrap: wrap;
+			}
+			.cources img {
+				width: 250px;
+				filter: drop-shadow(0px 3px 5px #433d3d);
+				cursor: pointer;
+				border-radius: 8px;
+				transition: 0.3s;
+			}
+			.gallery img:hover {
+				transform: scale(1.05);
+			}
+			.popup {
+				display: none; 
+				position: fixed;
+				z-index: 1000;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0, 0, 0, 0.9);
+				justify-content: center;
+				align-items: center;
+			}
+			.popup img {
+				max-width: 90%;
+				max-height: 80%;
+				border-radius: 10px;
+				box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.7);
+			}
 
+			.close-btn {
+				position: absolute;
+				top: 20px;
+				right: 30px;
+				font-size: 40px;
+				color: #fff;
+				cursor: pointer;
+				font-weight: bold;
+			}
+
+			.close-btn:hover {
+				color: #ffcc00;
+			}
 			@media (max-width: 600px) {
 				header h1 {
 					font-size: 22px;
@@ -97,10 +133,9 @@
 				<h1>Dmytro Savin</h1>
 				<p>📍 Odesa, Ukraine | 26 years old</p>
 				<p>📧 dmytrich89@gmail.com</p>
-            <p>📱 +380930793746 | ➤ @zbogr </p>
+				<p>📱 +380930793746 | ➤ @zbogr</p>
 				<p>Aspiring Front-End Developer (Trainee)</p>
 			</header>
-
 			<section>
 				<h2>Experience</h2>
 				<p>
@@ -114,14 +149,12 @@
 					>
 				</p>
 			</section>
-
 			<section>
 				<h2>Education</h2>
 				<p>
 					Currently self-studying web development through online courses and practice projects.
 				</p>
 			</section>
-
 			<section class="skills">
 				<h2>Skills</h2>
 				<span>HTML5</span>
@@ -133,7 +166,6 @@
 				<span>Communication</span>
 				<span>Self-education</span>
 			</section>
-
 			<section class="projects">
 				<h2>Projects</h2>
 				<a href="https://github.com/zbogr/zbogr.github.io.git" target="_blank"
@@ -143,7 +175,6 @@
 					>Landing Page Practice 2</a
 				>
 			</section>
-
 			<section>
 				<h2>About Me</h2>
 				<p>
@@ -152,10 +183,48 @@
 					parallel, I am already interested in technologies such as React.js & Vite & Node.js
 				</p>
 			</section>
-
+			<section>
+				<h2>Cources</h2>
+				<div class="cources">
+					<img
+						src="https://api2.sololearn.com/v2/certificates/CC-PF1AAT3Z/image/jpg?t=638947315632490950"
+						alt="" />
+					<img
+						src="https://api2.sololearn.com/v2/certificates/CC-F1UEFMIK/image/jpg?t=638947315109197100"
+						alt="" />
+					<img
+						src="https://api2.sololearn.com/v2/certificates/CC-TY66RMNY/image/jpg?t=638947315854207030"
+						alt="" />
+				</div>
+				<div class="popup" id="popup">
+					<span class="close-btn" id="closeBtn">&times;</span>
+					<img id="popupImg" src="" alt="Popup image" />
+				</div>
+			</section>
 			<footer>
 				<p>© 2025 Dmytro Savin | Resume</p>
 			</footer>
 		</div>
+		<script>
+			const images = document.querySelectorAll(".cources img");
+			const popup = document.getElementById("popup");
+			const popupImg = document.getElementById("popupImg");
+			const closeBtn = document.getElementById("closeBtn");
+			images.forEach((img) => {
+				img.addEventListener("click", () => {
+					popup.style.display = "flex";
+					popupImg.src = img.src;
+					popupImg.alt = img.alt;
+				});
+			});
+			closeBtn.addEventListener("click", () => {
+				popup.style.display = "none";
+			});
+			popup.addEventListener("click", (e) => {
+				if (e.target === popup) {
+					popup.style.display = "none";
+				}
+			});
+		</script>
 	</body>
 </html>
